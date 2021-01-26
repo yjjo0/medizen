@@ -1,0 +1,73 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <title>Medizen</title>
+    
+    <style>
+    
+    html, body {
+    	height: 100%;
+    }
+    .container-fluid {
+        position: relative;
+        min-height: 100%;
+        padding: 0;
+        padding-bottom: 100px;
+    }
+    .table1 {
+        margin: auto;
+        width: 90%;
+        border-spacing: 0;
+        font-size: xx-small;
+    }
+    .table2 {
+        margin: auto;
+        width: 90%;
+        border-spacing: 0;
+        font-size: x-small;
+    }
+    footer {
+        position: absolute;
+        height: 80px;
+        bottom: 0;
+        background: #0B3861;
+        font-size: x-small;
+    }
+    
+    </style>
+</head>
+<body>
+
+    <!-- header -->
+    <header class = "text-center w-100">
+        <!-- medizen imange -->
+        <a href = "{% url 'medizen:search' %}"><img src = "/static/img/medizen.jpg" class = "p-2" width = "80px"></a>  
+    </header>
+
+<div class = "container-fluid">
+    
+<!-- template conetent start -->
+{% block content %}
+{% endblock %}
+<!-- template conetent end -->
+
+    <!-- footer -->
+    <footer class = "text-light text-center w-100">
+        <small>
+            서울특별시 강남구 테헤란로 223 큰길타워 20층<br>
+            20F Keungil Tower 223, Teheran-ro, Gangnam-gu, Seoul, Republic of Korea<br>
+            Tel. 02-555-9808 / Fax. 02-555-9805 / E-mail. info@medizencare.com<br>
+            Copyright © 2020 Medizen Humancare lnc., All Rights Reserved.
+        </small>
+    </footer>
+
+</div>
+
+</body>
+</html>

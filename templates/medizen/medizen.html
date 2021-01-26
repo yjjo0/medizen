@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<!-- top bar -->
+    <h4 class = "text-light text-center bg-secondary p-3 ">메디젠 유전체 검사지 조회</h4>
+
+	<!-- search table -->
+    <table class = "table1 table-borderless text-center table-sm">
+
+		<!-- action form for search examination -->
+        <form action = "{% url 'medizen:search' %}" method = "GET">
+            <tr>
+            	<th>의뢰인 정보</th>
+            	<th>코드 ID</th>
+            	<th>성명</th>
+            	<th rowspan = "2">
+					<!-- input button -->
+                    <input type = "submit" value = "검색" class = "btn btn-primary" style = "font-size:7pt; width:50px">
+            	</th>
+            </tr>
+            <tr>
+            	<td>
+					<!-- input ex_clt_nm -->
+            	    <input type = "text" class = "form-control" name = "cn"  style = "font-size:7pt; width:80px">
+                </td>
+            	<td>
+					<!-- input ex_cd -->
+            	    <input type = "text" class = "form-control" name = "cd" style = "font-size:7pt; width:80px">
+            	</td>
+            	<td>
+					<!-- input ex_obj_nm -->
+            	    <input type = "text" class = "form-control" name = "on" style = "font-size:7pt; width:80px">
+            	</td>
+            </tr>
+        </form>
+		
+    </table>
+        
+	<!-- search list -->
+    <table class = "table1 table-striped text-center mb-3 table-sm">
+        <tr class = "text-light bg-info">
+        	<th>의뢰인 정보</th>
+        	<th>코드 ID</th>
+        	<th>성명</th>
+        	<th>의뢰일자</th>
+        	<th>패키지명</th>
+        	<th>검사지</th>
+        </tr>
+        {% for exam in examination %}
+        <tr>
+           	<td>{{ exam.ex_clt_nm }}</td>
+           	<td>{{ exam.ex_cd }}</td>
+           	<td>{{ exam.ex_obj_nm }}</td>
+           	<td>{{ exam.ex_date }}</td>
+           	<td>{{ exam.ex_pkg_nm }}</td>
+			<!-- send ex_sn to exam url -->
+           	<td><a href = "{% url 'medizen:exam' exam.ex_sn %}"><U>보기</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}
